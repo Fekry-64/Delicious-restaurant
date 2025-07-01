@@ -1,0 +1,32 @@
+/* main.css - Custom project styles. Add your custom CSS below. */
+
+/* Button hover effect */
+button, .btn {
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+button:hover, .btn:hover {
+  filter: brightness(0.95);
+  box-shadow: 0 2px 8px rgba(204, 102, 0, 0.12);
+}
+
+/* Nav link hover effect (if not already styled) */
+.nav-link {
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-link:hover {
+  color: #cc6600 !important;
+  background: none !important;
+  border-radius: 0;
+  text-decoration: none;
+}
+
+/* Active nav link highlight */
+.nav-link.active {
+  color: #ffa500 !important;
+  background: none !important;
+  border-radius: 0;
+  font-weight: bold;
+  border-bottom: 2px solid #ffa500;
+  box-shadow: none;
+} 

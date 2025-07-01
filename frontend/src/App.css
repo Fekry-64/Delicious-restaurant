@@ -1,0 +1,579 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #ffa500;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Restaurant Website Styles */
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Navbar Layout Fixes */
+.navbar-nav {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+.navbar-nav .nav-link {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+/* RTL Specific Styles */
+.rtl .navbar-nav {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+.rtl .navbar-nav .nav-link {
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
+.rtl .d-flex.align-items-center {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+/* LTR Specific Styles */
+.ltr .navbar-nav {
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+.ltr .navbar-nav .nav-link {
+  margin-right: 1rem;
+  margin-left: 0;
+}
+
+.ltr .d-flex.align-items-center {
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+/* Language Toggle Button */
+.language-toggle-btn {
+  min-width: 80px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+.language-toggle-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Navigation */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/* Cards */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(45deg, #ffa500, #e69500);
+  border: none;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #e69500, #cc8500);
+  transform: translateY(-2px);
+}
+
+/* Menu Items */
+.menu-item-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.menu-item-card img {
+  transition: transform 0.3s ease;
+}
+
+.menu-item-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Form Styling */
+.form-control, .form-select {
+  border-radius: 10px;
+  border: 2px solid #e9ecef;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #ffa500;
+  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.25);
+}
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #343a40, #212529);
+}
+
+/* Social Media Icons */
+.social-icons a {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-3px);
+}
+
+/* Loading Spinner */
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    background-attachment: scroll;
+  }
+  
+  .display-3 {
+    font-size: 2.5rem;
+  }
+  
+  .display-4 {
+    font-size: 2rem;
+  }
+  
+  /* Mobile RTL/LTR adjustments */
+  .rtl .navbar-nav,
+  .ltr .navbar-nav {
+    margin: 0 !important;
+  }
+  
+  .rtl .d-flex.align-items-center,
+  .ltr .d-flex.align-items-center {
+    margin: 0 !important;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem !important;
+  }
+  
+  .rtl .btn-outline-light,
+  .ltr .btn-outline-light {
+    margin: 0 0.5rem !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cc6600;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b35900;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: linear-gradient(45deg, #ffa500, #e69500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-custom {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Contact Page Specific */
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* Menu Categories */
+.category-badge {
+  background: linear-gradient(45deg, #6c757d, #495057);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.875rem;
+}
+
+/* Price Badge */
+.price-badge {
+  background: linear-gradient(45deg, #28a745, #20c997);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+/* Custom Danger Color Override */
+.btn-danger {
+  background-color: #cc6600 !important;
+  border-color: #cc6600 !important;
+}
+
+.btn-danger:hover {
+  background-color: #b35900 !important;
+  border-color: #b35900 !important;
+}
+
+.btn-outline-danger {
+  color: #cc6600 !important;
+  border-color: #cc6600 !important;
+}
+
+.btn-outline-danger:hover {
+  background-color: #cc6600 !important;
+  border-color: #cc6600 !important;
+}
+
+.text-danger {
+  color: #cc6600 !important;
+}
+
+.bg-danger {
+  background-color: #cc6600 !important;
+}
+
+.badge.bg-danger {
+  background-color: #cc6600 !important;
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Card Styles */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15) !important;
+}
+
+/* Button Styles */
+.btn-custom {
+  background: linear-gradient(45deg, #ffa500, #e69500);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  background: linear-gradient(45deg, #e69500, #cc8500);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
+}
+
+/* Form Styles */
+.form-control {
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #ffa500;
+  box-shadow: 0 0 0 0.2rem rgba(255, 165, 0, 0.25);
+}
+
+/* Navbar Styles */
+.navbar-custom {
+  background: linear-gradient(135deg, #343a40, #212529);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Footer Styles */
+.footer-custom {
+  background: linear-gradient(135deg, #343a40, #212529);
+  color: white;
+}
+
+/* Menu Item Styles */
+.menu-item {
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.menu-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.menu-item img {
+  transition: transform 0.3s ease;
+}
+
+.menu-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Category Filter */
+.category-filter {
+  margin-bottom: 30px;
+}
+
+.category-filter .btn {
+  margin: 0 5px;
+  border-radius: 25px;
+  padding: 8px 20px;
+  transition: all 0.3s ease;
+}
+
+/* Reservation Form */
+.reservation-form {
+  background: #f1f1f1;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.reservation-form .btn {
+  background: #ffa500;
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.reservation-form .btn:hover {
+  background: #e69500;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
+}
+
+/* Contact Info */
+.contact-info {
+  background: linear-gradient(45deg, #ffa500, #e69500);
+  color: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.contact-info h3 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Social Media Icons */
+.social-icons a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #6c757d, #495057);
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  margin: 0 5px;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  background: linear-gradient(45deg, #28a745, #20c997);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Admin Dashboard */
+.hover-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2) !important;
+}
+
+.hover-card .fa-3x {
+  transition: transform 0.3s ease;
+}
+
+.hover-card:hover .fa-3x {
+  transform: scale(1.1);
+}
+
+/* Standardized custom styles moved from inline/component styles */
+
+/* Centered spinner (used in loading states) */
+.centered-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+.fullscreen-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Main container top margin for admin pages */
+.admin-main-container {
+  margin-top: 100px;
+}
+
+/* Modal overlay for custom modals */
+.custom-modal-overlay {
+  display: block;
+  background: rgba(0,0,0,0.5);
+}
+
+/* Edit image preview in admin menu */
+.edit-image-preview {
+  max-width: 100%;
+  max-height: 120px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Custom gap utility for flex columns */
+.flex-gap-10 {
+  gap: 10px;
+}
