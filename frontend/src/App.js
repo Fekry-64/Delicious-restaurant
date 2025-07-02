@@ -39,10 +39,30 @@ function App() {
   const [language, setLanguage] = useState('en');
   const [siteData, setSiteData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstallPrompt, setShowInstallPrompt] = useState(false);
+  const [isIos, setIsIos] = useState(false);
+  const [isInStandaloneMode, setIsInStandaloneMode] = useState(false);
 
   useEffect(() => {
     // Fetch site data
     fetchSiteData();
+
+    // Detect iOS
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    const ios = /iphone|ipad|ipod/.test(userAgent);
+    setIsIos(ios);
+    // Detect if in standalone mode
+    setIsInStandaloneMode(window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true);
+
+    // Listen for the beforeinstallprompt event (Android/Chrome)
+    const handler = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallPrompt(true);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+    return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
 
   const fetchSiteData = async () => {
@@ -62,6 +82,19 @@ function App() {
   const toggleLanguage = () => {
     setLanguage(prev => prev === 'en' ? 'ar' : 'en');
   };
+
+  const handleInstallClick = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        setShowInstallPrompt(false);
+        setDeferredPrompt(null);
+      }
+    }
+  };
+
+  const handleClosePrompt = () => setShowInstallPrompt(false);
 
   if (loading) {
     return (
@@ -94,7 +127,29 @@ function App() {
               <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
-          <Footer siteData={siteData} />
+          <Footer siteData={siteData} 
+            canInstall={!!deferredPrompt && !isInStandaloneMode}
+            onInstallClick={handleInstallClick}
+            isIos={isIos}
+            isInStandaloneMode={isInStandaloneMode}
+          />
+          {/* PWA Install Prompt */}
+          {showInstallPrompt && !isInStandaloneMode && !isIos && (
+            <div style={{position: 'fixed', bottom: 24, right: 24, zIndex: 9999, background: '#fff', border: '1px solid #ccc', borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.15)', padding: 16, display: 'flex', alignItems: 'center', gap: 12}}>
+              <span>Install this app for a better experience!</span>
+              <button className="btn btn-primary" onClick={handleInstallClick}>Install</button>
+              <button className="btn btn-link" onClick={handleClosePrompt} style={{color: '#888'}}>Dismiss</button>
+            </div>
+          )}
+          {/* iOS Install Instructions */}
+          {isIos && !isInStandaloneMode && (
+            <div style={{position: 'fixed', bottom: 24, right: 24, zIndex: 9999, background: '#fff', border: '1px solid #ccc', borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.15)', padding: 16, display: 'flex', alignItems: 'center', gap: 12, maxWidth: 320}}>
+              <span style={{fontSize: 14}}>
+                Install this app on your iPhone/iPad: tap <span style={{fontWeight: 'bold'}}>&#x2191;</span> then <b>Add to Home Screen</b>
+              </span>
+              <button className="btn btn-link" onClick={handleClosePrompt} style={{color: '#888'}}>Dismiss</button>
+            </div>
+          )}
         </div>
       </Router>
     </LanguageContext.Provider>

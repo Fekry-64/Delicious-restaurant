@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import LanguageContext from '../contexts/LanguageContext';
 
-const Footer = ({ siteData }) => {
+const Footer = ({ siteData, canInstall, onInstallClick, isIos, isInStandaloneMode }) => {
   const { language, toggleLanguage } = useContext(LanguageContext);
 
   const translations = {
@@ -208,7 +208,24 @@ const Footer = ({ siteData }) => {
                 </button>
                 <Link to="/reservation" className="btn btn-danger">
                   {t.bookNow}
-            </Link>
+                </Link>
+                {/* PWA Install Button */}
+                {canInstall && !isInStandaloneMode && !isIos && (
+                  <button 
+                    className="btn btn-danger install-app-btn"
+                    onClick={onInstallClick}
+                    style={{ fontWeight: 600, letterSpacing: 0.5, boxShadow: '0 2px 8px rgba(204,102,0,0.12)' }}
+                  >
+                    <i className="fas fa-mobile-alt me-2"></i> Install App
+                  </button>
+                )}
+                {/* iOS Install Instructions */}
+                {isIos && !isInStandaloneMode && (
+                  <span style={{fontSize: 14, marginLeft: 8, marginTop: 12, display: 'block'}}>
+                    <i className="fas fa-info-circle me-1"></i>
+                    Install on iPhone/iPad: tap <span style={{fontWeight: 'bold'}}>&#x2191;</span> then <b>Add to Home Screen</b>
+                  </span>
+                )}
               </div>
           </div>
         </div>

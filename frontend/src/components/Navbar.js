@@ -287,8 +287,8 @@ const Navbar = ({ siteData }) => {
           <Link className={`nav-link ${isActive('/menu')}`} to="/menu" onClick={closeMobileMenu}>{t.menu}</Link>
           <Link className={`nav-link ${isActive('/contact')}`} to="/contact" onClick={closeMobileMenu}>{t.contact}</Link>
           <Link className={`nav-link ${isActive('/reservation')}`} to="/reservation" onClick={closeMobileMenu}>{t.bookTable}</Link>
-        </div>
-      </nav>
+      </div>
+    </nav>
     </>
   );
 };
